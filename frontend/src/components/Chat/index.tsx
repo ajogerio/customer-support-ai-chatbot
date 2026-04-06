@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Message } from '@/types/chat'
 
 export default function Chat() {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
 
   const sendMessage = () => {
     if (input.trim() === '') return; // Do not send empty messages
-    setMessages([...messages, input]);
+    setMessages([...messages, { text: input, sender: 'user' }]);
     setInput('');
   }
 
@@ -16,7 +17,9 @@ export default function Chat() {
     <div>
       {/* Display Messages */}
       {messages.map((msg, index) => (
-        <div key={index}>{msg}</div>
+        <div key={index}>
+          <strong>{msg.sender}</strong> {msg.text}
+        </div>
       ))}
 
       {/* Input Box */}
