@@ -7,9 +7,19 @@ interface MessageBubbleProps {
 }
 
 export default function MessageBubble({ message }: MessageBubbleProps) {
+  const isUser = message.sender === 'user'
+
   return (
-    <div>
-      <strong>{message.sender}</strong> {message.text}
+    <div
+      className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
+    >
+      <div
+        className={`p-2 rounded max-w-xs ${
+          isUser ? 'bg-brand-yellow text-brand-black' : 'bg-brand-black text-brand-white'
+        }`}
+      >
+        {message.text}
+      </div>
     </div>
   )
 }
