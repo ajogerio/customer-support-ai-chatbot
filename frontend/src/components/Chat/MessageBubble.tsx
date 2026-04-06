@@ -1,13 +1,13 @@
 'use client'
 
-import { Message } from "@/types/chat"
+import { Message, MESSAGE_SENDER } from "@/types/chat"
 
 interface MessageBubbleProps {
   message: Message;
 }
 
 export default function MessageBubble({ message }: MessageBubbleProps) {
-  const isUser = message.sender === 'user'
+  const isUser = message.sender === MESSAGE_SENDER.USER
 
   return (
     <div
