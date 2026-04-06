@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Message } from '@/types/chat'
 import ChatInput  from './ChatInput'
+import MessageBubble from './MessageBubble';
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -23,11 +24,10 @@ export default function Chat() {
     <div>
       {/* Display Messages */}
       {messages.map((msg, index) => (
-        <div key={index}>
-          <strong>{msg.sender}</strong> {msg.text}
-        </div>
+        <MessageBubble key={index} message={msg} />
       ))}
-
+      
+      {/* Chat Input */}
       <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>
   )
