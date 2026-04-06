@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Message } from '@/types/chat'
+import ChatInput  from './ChatInput'
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -27,18 +28,7 @@ export default function Chat() {
         </div>
       ))}
 
-      {/* Input Box */}
-      <input 
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') sendMessage();
-        }}
-        placeholder="Type your message..."
-      />
-
-      <button onClick={() => {sendMessage()}}>Send</button>
+      <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>
   )
 }
