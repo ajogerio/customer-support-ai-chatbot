@@ -6,6 +6,12 @@ export default function Chat() {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState<string>('');
 
+  const sendMessage = () => {
+    if (input.trim() === '') return; // Do not send empty messages
+    setMessages([...messages, input]);
+    setInput('');
+  }
+
   return (
     <div>
       {/* Display Messages */}
@@ -18,18 +24,13 @@ export default function Chat() {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') sendMessage();
+        }}
         placeholder="Type your message..."
       />
 
-      <button
-        onClick={() => {
-          if (input.trim() === '') return; // Do not send empty messages
-          setMessages([...messages, input]);
-          setInput('');
-        }}
-      >
-        Send
-      </button>
+      <button onClick={() => {sendMessage()}}>Send</button>
     </div>
   )
 }
