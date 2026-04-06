@@ -11,7 +11,12 @@ export default function Chat() {
     if (input.trim() === '') return; // Do not send empty messages
     setMessages([...messages, { text: input, sender: 'user' }]);
     setInput('');
-  }
+
+    setTimeout(() => {
+      const aiMessage: Message = { text: 'Hello! How can I help you?', sender: 'ai' };
+      setMessages((prev) => [...prev, aiMessage]);
+    }, 1000);
+  };
 
   return (
     <div>
