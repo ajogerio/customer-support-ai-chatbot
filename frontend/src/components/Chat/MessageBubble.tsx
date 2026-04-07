@@ -14,7 +14,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`rounded-md max-w-xs break-words ${
+        className={`rounded-md max-w-xs wrap-break-word ${
           isUser ? 'bg-brand-yellow text-brand-black p-2' : 'bg-brand-black text-brand-white'
         }`}
       >
