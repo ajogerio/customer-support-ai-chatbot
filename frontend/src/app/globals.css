@@ -5,6 +5,18 @@
   --color-brand-black: #2e222f;
   --color-brand-white: #ffffff
 }
+
+@layer utilities{
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 html, body {
   padding: 0;
   margin: 0;

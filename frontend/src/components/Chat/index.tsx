@@ -9,7 +9,7 @@ interface ChatProps{
 
 export default function Chat({ messages }: ChatProps) {
   return (
-    <div className='flex flex-col w-full h-full max-w-2xl overflow-y-auto scrollbar-hide'>
+    <div className='flex flex-col w-full h-full max-w-2xl overflow-y-auto no-scrollbar'>
         {messages.map((msg, index) => (
           <MessageBubble key={index} message={msg} />
         ))}
