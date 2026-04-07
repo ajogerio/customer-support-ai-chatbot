@@ -21,7 +21,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className='flex flex-col h-screen w-screen items-center'>
+    <div className='flex flex-col h-screen w-screen items-center py-10'>
       <Chat messages={messages}/>
       <ChatInput 
         input={input} 

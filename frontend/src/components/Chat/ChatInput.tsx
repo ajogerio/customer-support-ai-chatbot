@@ -10,7 +10,7 @@ interface ChatInputProps {
 
 export default function ChatInput({ input, setInput, sendMessage }: ChatInputProps) {
   return (
-    <div className='flex bg-brand-yellow text-brand-black p-2 rounded-full'>
+    <div className='bg-brand-yellow text-brand-black p-4 rounded-full w-full max-w-2xl'>
       <input 
         type="text"
         value={input}
@@ -18,8 +18,8 @@ export default function ChatInput({ input, setInput, sendMessage }: ChatInputPro
         onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') sendMessage();
         }}
-        placeholder="Type your message..."
-        className="bg-transparent text-brand-black placeholder-brand-black outline-none"
+        placeholder="Ask us anything..."
+        className="bg-transparent text-brand-black placeholder-brand-black outline-none w-full"
       />
     </div>
   )
