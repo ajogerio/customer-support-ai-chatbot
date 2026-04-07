@@ -18,3 +18,7 @@ app.get('/health', (req: Request, res: Response) => {
     message: 'Customer Support AI Chatbot Backend is running'
   });
 });
+
+app.listen(PORT, () => {
+  console.log(`Customer Support AI Chatbot Backend is listening on http://localhost:${PORT}`);
+});
