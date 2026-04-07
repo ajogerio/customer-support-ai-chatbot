@@ -21,12 +21,13 @@ export default function ChatPage() {
   };
 
   return (
-    <div className='flex flex-col h-screen'>
-      {/* Display Messages */}
+    <div className='flex flex-col h-screen w-screen items-center'>
       <Chat messages={messages}/>
-
-      {/* Chat Input */}
-      <ChatInput input={input} setInput={setInput} sendMessage={sendMessage} />
+      <ChatInput 
+        input={input} 
+        setInput={setInput} 
+        sendMessage={sendMessage} 
+      />
     </div>
   )
 }

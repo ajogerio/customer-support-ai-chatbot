@@ -10,7 +10,7 @@ interface ChatInputProps {
 
 export default function ChatInput({ input, setInput, sendMessage }: ChatInputProps) {
   return (
-    <div>
+    <div className='flex bg-brand-yellow text-brand-black p-2'>
       <input 
         type="text"
         value={input}
@@ -19,6 +19,7 @@ export default function ChatInput({ input, setInput, sendMessage }: ChatInputPro
           if (e.key === 'Enter') sendMessage();
         }}
         placeholder="Type your message..."
+        className="bg-transparent text-brand-black placeholder-brand-black outline-none"
       />
 
       <button onClick={() => {sendMessage()}}>Send</button>

@@ -9,7 +9,7 @@ interface ChatProps{
 
 export default function Chat({ messages }: ChatProps) {
   return (
-    <div>
+    <div className='max-w-xl'>
         {messages.map((msg, index) => (
           <MessageBubble key={index} message={msg} />
         ))}
