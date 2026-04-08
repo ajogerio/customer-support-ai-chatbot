@@ -1,12 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-brand-yellow: #f9c22b;
   --color-brand-black: #2e222f;
-  --color-brand-white: #ffffff
+  --color-brand-white: #ffffff;
 }
 
-@layer utilities{
+@layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -17,7 +17,8 @@
   }
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   font-family: var(--font-montserrat), sans-serif;

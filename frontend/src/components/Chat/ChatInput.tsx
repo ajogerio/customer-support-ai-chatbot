@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from 'react';
 
 interface ChatInputProps {
   input: string;
@@ -8,19 +8,25 @@ interface ChatInputProps {
   sendMessage: () => void;
 }
 
-export default function ChatInput({ input, setInput, sendMessage }: ChatInputProps) {
+export default function ChatInput({
+  input,
+  setInput,
+  sendMessage,
+}: ChatInputProps) {
   return (
-    <div className='fixed bottom-8 bg-brand-yellow text-brand-black p-4 rounded-full w-full max-w-2xl'>
-      <input 
+    <div className="bg-brand-yellow text-brand-black fixed bottom-8 w-full max-w-2xl rounded-full p-4">
+      <input
         type="text"
         value={input}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setInput(e.target.value)
+        }
         onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') sendMessage();
         }}
         placeholder="Ask us anything..."
-        className="bg-transparent text-brand-black placeholder-brand-black outline-none w-full"
+        className="text-brand-black placeholder-brand-black w-full bg-transparent outline-none"
       />
     </div>
-  )
+  );
 }

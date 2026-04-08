@@ -5,5 +5,5 @@ export const MESSAGE_SENDER = {
 
 export type Message = {
   text: string;
-  sender: typeof MESSAGE_SENDER[keyof typeof MESSAGE_SENDER];
+  sender: (typeof MESSAGE_SENDER)[keyof typeof MESSAGE_SENDER];
 };
