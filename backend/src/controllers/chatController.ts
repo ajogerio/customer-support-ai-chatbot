@@ -1,7 +1,4 @@
-import {
-  type Request,
-  type Response,
-} from 'express';
+import { type Request, type Response } from 'express';
 import { model } from '../config/gemini.js';
 
 export const createAiResponse = async (req: Request, res: Response) => {

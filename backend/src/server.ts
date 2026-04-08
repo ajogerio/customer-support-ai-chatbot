@@ -5,7 +5,7 @@ import express, {
   type Response,
 } from 'express';
 import cors from 'cors';
-import { createAiResponse } from './controllers/chatController.js';
+import chatRoutes from './routes/chatRoutes.js';
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
@@ -23,7 +23,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Chat message endpoint
-app.post('/api/chat', createAiResponse);
+app.use('/api/chat', chatRoutes);
 
 app.listen(Number(PORT), () => {
   console.log(
