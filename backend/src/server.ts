@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express, { type Application, type Request, type Response } from 'express';
 import cors from 'cors';
-import { model } from './config/gemini.js';
+import { createAiResponse } from './controllers/chatController.js';
 
 
 const app: Application = express();
@@ -20,29 +20,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Chat message endpoint
-app.post('/api/chat', async (req: Request, res: Response) => {
-  const { message } = req.body;
-
-  // Validate that the user really did send a message
-  if (!message) {
-    res.status(400).json({ error: 'Message is required' });
-    return;
-  }
-
-  try {
-    const result = await model.generateContent(message);
-    const aiResponse = result.response;
-    const aiResponseText = aiResponse.text();
-
-    console.log(`User said: ${message}`);
-    console.log(`AI replied: ${aiResponseText}`);
-
-    res.status(200).json({ reply: aiResponseText });
-  } catch (error) {
-    console.error('AI Error: ', error);
-    res.status(500).json({ error: `${error}`})
-  }
-});
+app.post('/api/chat', createAiResponse);
 
 app.listen(Number(PORT), () => {
   console.log(`Customer Support AI Chatbot Backend is listening on http://localhost:${PORT}`);
