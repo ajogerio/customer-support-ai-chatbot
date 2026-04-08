@@ -12,10 +12,10 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       <div
-        className={`max-w-xs rounded-md wrap-break-word ${
+        className={`rounded-md wrap-break-word ${
           isUser
-            ? 'bg-brand-yellow text-brand-black p-2'
-            : 'bg-brand-black text-brand-white'
+            ? 'bg-brand-yellow text-brand-black max-w-xs p-2'
+            : 'bg-brand-black text-brand-white max-w-2xl'
         }`}
       >
         {message.text}

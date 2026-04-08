@@ -14,7 +14,7 @@ export default function ChatInput({
   sendMessage,
 }: ChatInputProps) {
   return (
-    <div className="bg-brand-yellow text-brand-black fixed bottom-8 w-full max-w-2xl rounded-full p-4">
+    <div className="bg-brand-yellow text-brand-black w-full max-w-2xl rounded-full p-4">
       <input
         type="text"
         value={input}
