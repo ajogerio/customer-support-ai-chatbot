@@ -1,8 +1,11 @@
 import 'dotenv/config';
-import express, { type Application, type Request, type Response } from 'express';
+import express, {
+  type Application,
+  type Request,
+  type Response,
+} from 'express';
 import cors from 'cors';
 import { createAiResponse } from './controllers/chatController.js';
-
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
@@ -15,7 +18,7 @@ app.use(express.json());
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({
     status: 'ok',
-    message: 'Customer Support AI Chatbot Backend is running'
+    message: 'Customer Support AI Chatbot Backend is running',
   });
 });
 
@@ -23,5 +26,7 @@ app.get('/health', (req: Request, res: Response) => {
 app.post('/api/chat', createAiResponse);
 
 app.listen(Number(PORT), () => {
-  console.log(`Customer Support AI Chatbot Backend is listening on http://localhost:${PORT}`);
+  console.log(
+    `Customer Support AI Chatbot Backend is listening on http://localhost:${PORT}`
+  );
 });
