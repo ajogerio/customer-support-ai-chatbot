@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 dotenv.config();
 
 const genAI = new GoogleGenerativeAI(process.env.AI_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+const model = genAI.getGenerativeModel({ model: 'gemini-3.1-flash-lite-preview' });
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
@@ -39,20 +39,13 @@ app.post('/api/chat', async (req: Request, res: Response) => {
     const aiResponseText = aiResponse.text();
 
     console.log(`User said: ${message}`);
-    console.log(`AI replied: ${message}`);
+    console.log(`AI replied: ${aiResponseText}`);
 
     res.status(200).json({ reply: aiResponseText });
   } catch (error) {
     console.error('AI Error: ', error);
-    res.status(500).json({ error: `Server Error: ${error}`})
+    res.status(500).json({ error: `${error}`})
   }
-  
-
-  const mockBotResponse = `You said: "${message}." I am in testing mode.`
-
-  res.status(200).json({
-    reply: mockBotResponse
-  });
 });
 
 app.listen(Number(PORT), () => {
