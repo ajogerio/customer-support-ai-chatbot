@@ -1,12 +1,8 @@
+import 'dotenv/config';
 import express, { type Application, type Request, type Response } from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { model } from './config/gemini.js';
 
-dotenv.config();
-
-const genAI = new GoogleGenerativeAI(process.env.AI_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-3.1-flash-lite-preview' });
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
