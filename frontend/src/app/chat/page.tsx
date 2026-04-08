@@ -9,15 +9,31 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
   
-  const sendMessage = () => {
-    if (input.trim() === '') return; // Do not send empty messages
-    setMessages([...messages, { text: input, sender: MESSAGE_SENDER.USER }]);
+  const sendMessage = async () => {
+    const messageToSend: string = input;
+
+    if (messageToSend.trim() === '') return; // Do not send empty messages
+
+    setMessages((prev) => [...prev, { text: messageToSend, sender: MESSAGE_SENDER.USER }]);
     setInput('');
 
-    setTimeout(() => {
-      const aiMessage: Message = { text: 'Hello! How can I help you?', sender: MESSAGE_SENDER.AI };
-      setMessages((prev) => [...prev, aiMessage]);
-    }, 1000);
+    try {
+      const response = await fetch('http://localhost:5000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: messageToSend })
+      });
+
+      const data = await response.json();
+
+      setMessages((prev) => [...prev, { text: data.reply, sender: MESSAGE_SENDER.AI }])
+      
+    } catch(error) {
+      console.error('Frontend Error:', error);
+    }
+
   };
 
   return (
