@@ -24,7 +24,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // Chat message endpoint
-app.post('/api/chat', (req: Request, res: Response) => {
+app.post('/api/chat', async (req: Request, res: Response) => {
   const { message } = req.body;
 
   // Validate that the user really did send a message
@@ -33,7 +33,20 @@ app.post('/api/chat', (req: Request, res: Response) => {
     return;
   }
 
-  console.log(`User said ${message}`);
+  try {
+    const result = await model.generateContent(message);
+    const aiResponse = result.response;
+    const aiResponseText = aiResponse.text();
+
+    console.log(`User said: ${message}`);
+    console.log(`AI replied: ${message}`);
+
+    res.status(200).json({ reply: aiResponseText });
+  } catch (error) {
+    console.error('AI Error: ', error);
+    res.status(500).json({ error: `Server Error: ${error}`})
+  }
+  
 
   const mockBotResponse = `You said: "${message}." I am in testing mode.`
 
