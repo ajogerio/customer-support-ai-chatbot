@@ -16,10 +16,12 @@ app.use(express.json());
 
 // Health check route
 app.get('/health', (req: Request, res: Response) => {
-  res.status(200).json({
-    status: 'ok',
-    message: 'Customer Support AI Chatbot Backend is running',
-  });
+  res
+    .status(200)
+    .json({
+      status: 'ok',
+      message: 'Customer Support AI Chatbot Backend is running',
+    });
 });
 
 // Chat message endpoint
